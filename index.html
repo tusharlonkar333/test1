@@ -1,0 +1,62 @@
+<html>
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+   <title>Fintify</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<script type='text/javascript' src='https://cdn.yodlee.com/fastlink/v1/initialize.js'></script>
+<body>
+
+{% if status %}
+<div id="container-fastlink">
+    <div style="text-align: center;">
+   <!-- <input type="submit" id="btn-fastlink" value="Link an Account"> -->
+</div>
+</div>
+
+<script>
+    (function (window) {
+                window.fastlink.open({
+                        fastLinkURL: 'https://obstagenode.yodlee.uk/authenticate/private-OBStage-10/?channelAppName=obukstage',
+                        jwtToken: '{{jwtToken}}',
+
+                        onSuccess: function (data) {
+                                console.log(data);
+                                alert("onSuccess Account added successfuly");
+                        },
+                        onError: function (data) {
+                                console.log(data);
+                        },
+                        onExit: function (data) {
+                                console.log(data);
+                        },
+                        onEvent: function (data) {
+                                console.log(data);
+                        }
+                }, 'container-fastlink');
+            }(window));
+    </script>
+{% else %}
+<div class="container text-center">
+    <img src="https://api.fintify.com/static/img/logo.svg" alt="Fintify" width="30%" height="auto" style="margin-top:25%;">
+    <div class="text-xs-center">
+        <h3 style="color: red;">Something Went Wrong.!!</h3>
+        <p style="color: #757575;"> {{msg}}<p>
+  	</div>
+  </div>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        function autoclose(){
+            window.postMessage('Test', '*');
+          }
+          setTimeout(autoclose, 3000);
+    });
+  </script>
+{% endif %}
+</body>
+</html>
